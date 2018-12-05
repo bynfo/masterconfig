@@ -1,7 +1,7 @@
 # masterconfig
 MasterConfig is an extension to easily import Qlik Sense master items from external sources into your applications.
 
-[[https://github.com/bynfo/masterconfig/blob/master/img/mc.png|alt=masterconfig]]
+![MasterConfig user interface preview](https://raw.githubusercontent.com/bynfo/masterconfig/master/screenshot.png)
 
 ## Introduction 
 MasterConfig is a Qlik Sense visualization extension to create new master items in as many apps as you want. It can be used from within an app or from an outside app.
