@@ -1,0 +1,48 @@
+<div>
+
+  <p style="margin-bottom: 5px">
+    Use this tool to populate master items from an external source to several apps at once.
+    <div id="help" class="lui-bg-inverse-alt" style="margin: 5px 15% 0 15%">
+        <div style="float:right;margin-top:2px;margin-right:4px;"><span ng-click="removeHelp()" class="lui-icon lui-icon--small lui-icon--close" title="Close help."></span></div>
+        <ul>
+          <li class="lui-list__item">
+            <span class="lui-list__aside lui-icon lui-icon--help"></span>
+            <span class="lui-list__text">This extension does not check the synthax of master objects.</span>
+          </li>
+          <li class="lui-list__item">
+            <span class="lui-list__aside lui-icon lui-icon--help"></span>
+            <span class="lui-list__text">Prefer updating or adding master items to applications that are not already opened.</span>
+          </li>
+          <li class="lui-list__item">
+            <span class="lui-list__aside lui-icon lui-icon--help"></span>
+            <span class="lui-list__text">Ensure that the applications to which you are adding new master items have at least one sheet.</span>
+          </li>
+        </ul>
+    </div>
+
+  <hr>
+
+  <div style="text-align:center">
+    <button class="lui-button" ng-show="!isTableLoaded()" ng-click="loadItemsIntoTable()">Load items</button>
+    <button class="lui-button" ng-show="isTableLoaded()" ng-click="loadApplicationList()">List available applications</button>
+  </div>
+
+  <hr>
+
+  <div style="text-align:center" ng-show="isLoading('table')">Loading data...</div>
+
+  <div ng-show="!isLoading('table')" style="max-height: 600px; overflow-y: scroll;">
+    <table class="table-masteritems">
+
+        <tr>
+          <th id="{{field}}" ng-repeat="field in fieldlist"> {{field}} </th>
+        </tr>
+
+        <tr ng-repeat="row in table.rows" ng-class-odd="'striped'">
+          <td style="margin-right: 2px" ng-repeat="cell in row.cells"> {{cell.qText}} </td>
+        </tr>
+
+    </table>
+  </div>
+
+</div>

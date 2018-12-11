@@ -1,0 +1,10 @@
+.striped { background-color: lightgrey; }
+
+.table-masteritems > table thead {
+  display: block;
+}
+.table-masteritems > table tbody {
+  max-height: 600px;
+  display: block;
+  overflow-y: scroll;
+}

@@ -1,0 +1,13 @@
+{
+  "name": "MasterConfig",
+  "description": "Populate master items across applications",
+  "type": "visualization",
+  "icon": "library",
+  "version": "1.0",
+  "author": "Bynfo Oy",
+  "homepage": "https://bynfojira.atlassian.net/wiki/spaces/QS/pages/557023233/Qlik+Sense+MasterConfig+extensio",
+  "keywords": "qlik sense extension master items angularjs",
+  "license": "MIT",
+  "repository": "https://github.com/bynfo/masterconfig",
+  "preview": "screenshot.png"
+}

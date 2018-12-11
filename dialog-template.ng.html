@@ -1,0 +1,63 @@
+<lui-dialog style="min-width: 600px; max-height: 500px; overflow-y: scroll">
+
+  <lui-dialog-header>
+    <lui-dialog-title>
+      Choose which items to save
+    </lui-dialog-title>
+  </lui-dialog-header>
+
+  <lui-dialog-body ng-show="isLoading('dialog')">
+    Loading data...
+  </lui-dialog-body>
+
+  <lui-dialog-body ng-show="!isLoading('dialog')">
+
+    <div style="padding-right: 1%; width: 49%; float:left;">
+      <input class="lui-input" ng-model="searchAppList" placeholder="Filter apps for faster processing"/>
+      <br>
+      <div ng-repeat="app in applist | filter:searchAppList">
+        <label class="lui-checkbox">
+          <input class="lui-checkbox__input" type="checkbox" ng-model="app.isselected"/>
+          <div class="lui-checkbox__check-wrap">
+            <span class="lui-checkbox__check"></span>
+            <span class="lui-checkbox__check-text">{{ app.name | limitTo: 30 }}{{app.name.length > 30 ? '...' : ''}}</span>
+            <span ng-class="isMasterItemInAppIcon(app)" title="{{ isMasterItemInAppTooltip(app) }}"></span>
+          </div>
+        </label>
+      </div>
+      <div ng-if="apps.length === 0">
+        <strong>No app could be found.</strong>
+      </div>
+    </div>
+
+    <div style="padding-left: 1%; width: 49%; float:right;">
+      <input class="lui-input" ng-model="searchMasterItemsList" placeholder="Filter master items"/>
+      <br>
+      <div ng-repeat="masteritem in masteritems | filter:searchMasterItemsList">
+        <label class="lui-checkbox">
+          <input class="lui-checkbox__input" type="checkbox" ng-model="masteritem.isselected"/>
+          <div class="lui-checkbox__check-wrap">
+            <span class="lui-checkbox__check"></span>
+            <span class="lui-checkbox__check-text">{{ masteritem.title | limitTo: 30 }}{{masteritem.title.length > 30 ? '...' : ''}}</span>
+            <!-- <span ng-class="masterItemHasNewValuesIcon(masteritem)" title="{{ masterItemHasNewValuesTooltip(masteritem) }}"></span> -->
+          </div>
+        </label>
+      </div>
+      <div ng-if="masteritems.length === 0">
+        <strong>No master item could be found.</strong>
+      </div>
+    </div>
+
+  </lui-dialog-body>
+
+  <lui-dialog-footer>
+    <button class="lui-button lui-dialog__footer-button" ng-click="populateMasterItems()" ng-disabled='!countChecked()'>Save master items</button>
+    <button class="lui-button lui-dialog__footer-button" ng-click="clearNotifications()">Clear notifications</button>
+    <button class="lui-button lui-dialog__footer-button" ng-click="clearSelections(); close()">Close</button>
+  </lui-dialog-footer>
+
+  <div ng-repeat="error in errors" class="lui-bg-danger" style="padding: 5px;">Error: {{error.message}}</div>
+  <div ng-repeat="warning in warnings" class="lui-bg-warning" style="padding: 5px;">Warning: {{warning.message}}</div>
+  <div ng-repeat="info in infos" class="lui-bg-info" style="padding: 5px;">Info: {{info.message}}</div>
+
+</lui-dialog>
